@@ -25,6 +25,14 @@ async def on_message(msg):
         await msg.delete()
         await msg.guild.ban(msg.author, reason="Reklam")
 
+@piton.event
+async def on_member_join(member):
+    # Karşılama mesajı gönderme
+    for channel in member.guild.text_channels:
+        await channel.send(f" Hoş geldiniz: , {member.mention}!")
+
+
+
 @piton.command()
 async def merhaba(ctx):
     await ctx.send("Merhaba!")
